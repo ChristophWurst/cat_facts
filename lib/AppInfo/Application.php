@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace OCA\CatFacts\AppInfo;
 
+use OCA\CatFacts\Search\CatFactsProvider;
 use OCP\AppFramework\App;
 use OCP\AppFramework\Bootstrap\IBootContext;
 use OCP\AppFramework\Bootstrap\IBootstrap;
@@ -18,6 +19,7 @@ class Application extends App implements IBootstrap {
 	}
 
 	public function register(IRegistrationContext $context): void {
+		$context->registerSearchProvider(CatFactsProvider::class);
 	}
 
 	public function boot(IBootContext $context): void {
