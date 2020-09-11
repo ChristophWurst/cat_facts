@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<info xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
+	<id>cat_facts</id>
+	<name>Cat Facts</name>
+	<summary>💌Yes, cat facts.</summary>
+	<description>Want to impress your cat friends with new facts? Then this app is for you.</description>
+	<version>0.1.0</version>
+	<licence>mit</licence>
+	<author>Christoph Wurst</author>
+	<namespace>CatFacts</namespace>
+	<category>integration</category>
+	<category>social</category>
+	<dependencies>
+		<php min-version="7.2" max-version="7.4" />
+		<nextcloud min-version="20" max-version="21" />
+	</dependencies>
+	<commands>
+		<command>OCA\CatFacts\Command\Search</command>
+	</commands>
+</info>
