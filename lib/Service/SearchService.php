@@ -9,6 +9,7 @@ use OCP\Http\Client\IClientService;
 use Psr\Log\LoggerInterface;
 use function array_filter;
 use function array_map;
+use function array_values;
 use function json_decode;
 use function mb_strpos;
 use function mb_strtolower;
@@ -43,17 +44,19 @@ class SearchService {
 		$body = $response->getBody();
 		$parsed = json_decode($body, true);
 
-		$mapped = array_map(function(array $fact) {
+		$mapped = array_map(function (array $fact) {
 			return $fact['text'];
 		}, $parsed['all']);
 
 		if (empty($term)) {
-			return $mapped;
+			return array_values($mapped);
 		}
 
-		return array_filter($mapped, function(string $fact) use ($term) {
-			return mb_strpos(mb_strtolower($fact), mb_strtolower($term));
-		});
+		return array_values(
+			array_filter($mapped, function (string $fact) use ($term) {
+				return mb_strpos(mb_strtolower($fact), mb_strtolower($term));
+			})
+		);
 	}
 
 }

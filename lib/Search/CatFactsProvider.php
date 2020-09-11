@@ -46,12 +46,12 @@ class CatFactsProvider implements IProvider {
 			array_map(function(string $fact) {
 				return new SearchResultEntry(
 					'',
-					$fact,
+					$this->l10n->t('Did you know …'),
 					$fact,
 					'https://cat.facts',
-					'icon-mail'
+					'icon-info'
 				);
-			}, $this->searchService->findCatFacts($query->getTerm()))
+			}, $this->searchService->findCatFacts($query->getTerm())),
 		);
 	}
 }
